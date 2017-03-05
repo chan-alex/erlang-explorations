@@ -1,0 +1,9 @@
+*~
+\#*\#
+.\#*
+*.backup
+*.bak
+*~
+*.swp
+output/
+*.beam
