@@ -30,8 +30,21 @@ say_hello(_, Name) ->                     %% This is necessarily.
 %%  else
 %%     print
 
-
 %% Function clauses are seperated by ";"
 %% final function ends with "."
 
 
+
+%% Pattern matching lists.
+
+head([H|_]) -> H.
+second([_,X|_]) -> X.
+tail([_|T]) -> T.
+
+
+%% 19> pattern_matching1:head([1,2,3,4,5]).
+%% 1
+%% 20> pattern_matching1:tail([1,2,3,4,5]).
+%% [2,3,4,5]
+%% 67> pattern_matching1:second([1,2,3,4,5]).
+%% 2
