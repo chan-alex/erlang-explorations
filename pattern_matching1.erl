@@ -1,6 +1,8 @@
 
 - module(pattern_matching1).
 
+%% Compile option to export everything when compiling.
+%% mainly for easier REPL testing.
 - compile(export_all).
 
 %% Because of pattern matching, there is no if...else... block in erlang.
