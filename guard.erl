@@ -60,3 +60,72 @@ test_if1() ->
 
   % This error occurs because in Erlang, every expression must evaluate to something.
   % For test_if1(), Erlang is not able to have the guards succeed, so it will crash.
+
+
+
+
+test_if2(N) ->
+
+ if N < 10 ->
+    it_ok
+  end.
+
+% The above function will give an error if N > 10.
+
+% 13> guard:test_if2(5).
+% it_ok
+% 14> guard:test_if2(10).
+% ** exception error: no true branch found when evaluating an if expression
+%     in function  guard:test_if2/1 (guard.erl, line 67)
+
+% it needs an "else".
+
+test_if3(N) ->
+
+ if N < 10 ->
+    it_ok;
+  true ->
+    it_also_ok
+  end.  
+
+
+% 18> guard:test_if3(5).
+% it_ok
+% 19> guard:test_if3(10).
+% it_also_ok
+
+
+
+say_i_am(What) ->
+
+  What_i_am = if What == kettle  -> "Kettle";
+                 What == orange  -> "Orange";
+                 What == dog     -> "Dog";
+                 What == cabbage -> "Cabbage";
+                 true ->  "??????"
+              end,
+  { "I am a " ++ What_i_am ++ "!"}.
+
+% 22> guard:say_i_am(kettle).
+% {"I am a Kettle!"}
+% 23> guard:say_i_am(orange).
+% {"I am a Orange!"}
+% 24> guard:say_i_am(banana).
+% {"I am a ??????!"}
+
+
+test_case1(S) ->
+  case S of
+     true  -> "It is true";
+     false -> "It is false";
+     _ -> "Something else"
+  end.
+
+
+% 28> guard:test_case1(true).
+% "It is true"
+% 29> guard:test_case1(false).
+% "It is false"
+% 30> guard:test_case1(fat).
+% "Something else"
+    
